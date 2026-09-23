@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SplitHaus Review Response</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#faf6ef; --ground-2:#f0e9dc; --ink:#10242b; --ink-2:#1c3b44; --muted:#5b6b6b;
+  --line:#e2d8c6; --paper:#ffffff; --accent:#c1603f; --accent-ink:#ffffff;
+  --a:#c05c3e; --a-soft:#f3e0d8; --a-text:#7a2f1c;
+  --b:#356f66; --b-soft:#d7e6e2; --b-text:#244c45;
+  --c:#1a3a4a; --c-soft:#dbe3e6; --c-text:#1a3a4a;
+  --warn-soft:#f6ead0; --warn-text:#6b4a12; --code-bg:#f0e9dc;
+  --serif:'Newsreader','Iowan Old Style',Palatino,Georgia,serif;
+  --sans:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --ground:#0c1417; --ground-2:#101c20; --ink:#e9e4d9; --ink-2:#cfc8ba; --muted:#93a3a7;
+  --line:#22343a; --paper:#131f24; --accent:#e0835c; --accent-ink:#1a0e08;
+  --a:#9a4e37; --a-soft:#2d1a13; --a-text:#e7b69c;
+  --b:#32625a; --b-soft:#14231f; --b-text:#a9cfc6;
+  --c:#285267; --c-soft:#131f26; --c-text:#b5d3e4;
+  --warn-soft:#2a2213; --warn-text:#e6c98c; --code-bg:#172529;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0c1417; --ground-2:#101c20; --ink:#e9e4d9; --ink-2:#cfc8ba; --muted:#93a3a7;
+  --line:#22343a; --paper:#131f24; --accent:#e0835c; --accent-ink:#1a0e08;
+  --a:#9a4e37; --a-soft:#2d1a13; --a-text:#e7b69c;
+  --b:#32625a; --b-soft:#14231f; --b-text:#a9cfc6;
+  --c:#285267; --c-soft:#131f26; --c-text:#b5d3e4;
+  --warn-soft:#2a2213; --warn-text:#e6c98c; --code-bg:#172529;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:17px/1.6 var(--sans);padding-inline:16px;padding-block:40px 72px}
+.wrap{max-width:760px;margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,2.7rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.1rem;font-family:var(--sans);font-weight:700}
+p{margin:0}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+header{display:grid;gap:.8rem;margin-bottom:1rem}
+.lede{font-size:1.12rem;color:var(--ink-2)}
+section{margin-top:3.2rem;display:grid;gap:1rem}
+.muted{color:var(--muted)}
+code{font-family:var(--mono);font-size:.82em;background:var(--code-bg);padding:.08em .35em;border-radius:4px;overflow-wrap:anywhere}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.toc{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.9rem;padding:.9rem 0;border-block:1px solid var(--line);margin-top:1.4rem}
+.toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.toc a:hover{border-color:var(--accent)}
+
+ul.agree{list-style:none;margin:0;padding:0;display:grid;gap:.9rem}
+ul.agree li{display:grid;grid-template-columns:22px 1fr;gap:.7rem}
+ul.agree li::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--b);margin-top:.45rem}
+ul.agree b{display:block}
+
+.facts{display:grid;gap:0}
+.fact{display:grid;gap:.35rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.fact:first-child{border-top:1px solid var(--line)}
+.fact .said{font-size:.9rem;color:var(--muted)}
+.fact .said::before{content:"Review: ";font-weight:700;letter-spacing:.02em}
+.fact .is::before{content:"What the code shows: ";font-weight:700}
+.fact .so{font-size:.95rem}
+.fact .so::before{content:"So: ";font-weight:700;color:var(--accent)}
+.badge{justify-self:start;font-size:.72rem;font-weight:700;padding:.15rem .5rem;border-radius:5px}
+.b-right{background:var(--b-soft);color:var(--b-text)}
+.b-changed{background:var(--warn-soft);color:var(--warn-text)}
+
+.view{display:grid;gap:.4rem;padding-left:1rem;border-left:3px solid var(--line)}
+.view h3{font-size:1rem}
+
+.proposal{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.4rem;display:grid;gap:1rem}
+.split{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:flex-start}
+.split > .txt{flex:1 1 300px;display:grid;gap:.8rem}
+.split > .phone-col{flex:1 1 300px;display:flex;justify-content:center}
+.phone{width:100%;max-width:340px;background:var(--ground);border:1px solid var(--line);border-radius:26px;padding:16px 16px 20px;font-size:.9rem;line-height:1.5}
+.phone .bar{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.brand{font-weight:700;font-size:.9rem}
+.draft-chip{font-size:.7rem;font-weight:700;background:var(--warn-soft);color:var(--warn-text);padding:.2rem .5rem;border-radius:99px}
+.phone .t{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1.2}
+.phone .blk{padding-top:12px;margin-top:12px;border-top:1px solid var(--line);display:grid;gap:.35rem}
+.phone .blk b{font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{font-size:.75rem;font-weight:600;padding:.15rem .55rem;border-radius:99px}
+.ga{background:var(--a-soft);color:var(--a-text)} .gb{background:var(--b-soft);color:var(--b-text)} .gc{background:var(--c-soft);color:var(--c-text)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-size:.68rem;font-variant-numeric:tabular-nums;text-align:center}
+.cal .dow{color:var(--muted);font-weight:600}
+.cal .d{padding:.35rem 0;border-radius:4px;font-weight:600}
+.cal .fixed{outline:2px solid var(--a);outline-offset:-2px}
+.btn{display:block;text-align:center;font-weight:700;padding:.7rem;border-radius:10px;background:var(--accent);color:var(--accent-ink)}
+.cap{font-size:.8rem;color:var(--muted)}
+
+.compare{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:.6rem .8rem .6rem 0;border-bottom:1px solid var(--line)}
+th{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td:first-child{font-weight:600}
+
+ol.asks{margin:0;padding-left:1.3rem;display:grid;gap:1rem}
+ol.asks li::marker{font-family:var(--serif);font-weight:600;color:var(--accent)}
+ol.asks b{display:block}
+.steps{display:grid;gap:.7rem}
+.stepline{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.stepline span{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:.15rem}
+.sign{margin-top:2.4rem;font-family:var(--serif);font-size:1.15rem}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Reply to the site review</span>
+  <h1>You found the right problem. Here's where I'd take it next.</h1>
+  <p class="lede">Thanks for putting this together. Below: what I think you got right and want to adopt, a few facts that shift some of the recommendations, where I see things differently, and an idea that builds on your summary page. I'd like us to agree on direction before either of us builds anything.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#agree">Where we agree</a><a href="#facts">Facts to update</a><a href="#differ">Where I see it differently</a><a href="#idea">Building on your summary page</a><a href="#asks">What I need from you</a><a href="#next">Suggested next steps</a>
+  </nav>
+</header>
+
+<section id="agree">
+  <h2>Where we agree</h2>
+  <p>These I'd like to adopt more or less as you wrote them.</p>
+  <ul class="agree">
+    <li><div><b>The group decides, not just the person who finds us.</b>SplitHaus only works if everyone who shares the house uses it, so the people who have to go along with it are part of the decision. That is the most important idea in the review and I think it's right. (Where I'd adjust it is the order things happen in; see the first point under "Where I see it differently.")</div></li>
+    <li><div><b>The current headline doesn't say what we do.</b>"How homes stay shared." is a brand line; a cold reader can't tell what the product is. Where I land on the replacement is different from your version; see "The headline" below.</div></li>
+    <li><div><b>Shared costs out of the hero.</b>Asking someone to judge two products at once makes both harder to say yes to.</div></li>
+    <li><div><b>The August question.</b>Worrying about losing a traditional week is the first thing a co-owner feels, and we don't answer it anywhere yet.</div></li>
+    <li><div><b>Some copy overpromises.</b>The great-aunt answer needs tighter wording (details below), and "However your group does it, SplitHaus can match it" is broader than we can back up.</div></li>
+    <li><div><b>Test understanding with real people, not click counts.</b>"What would you text the person who sent you this?" is a great test question. I'd like to use it, on the page people actually get sent (see next steps).</div></li>
+  </ul>
+</section>
+
+<section id="facts">
+  <h2>Facts to update</h2>
+  <p>The review worked from a capture and a packet of notes, and several of those notes are older than the code. I checked each one against the current code. These change some recommendations but not the direction.</p>
+  <div class="facts">
+    <div class="fact">
+      <span class="badge b-changed">Changes rec. 1</span>
+      <p class="said">/how and /pricing redirect to login, so evaluation is gated.</p>
+      <p class="is">Those pages never existed. The redirect was the old catch-all for any unknown URL, and since Sep 17 unknown URLs return a normal "not found" page instead. Pricing and the FAQ are on the public homepage, and nothing about the product sits behind a login.</p>
+      <p class="so">There's no wall to take down. Separate /how and /pricing pages may still be worth building, but for clarity and search, not access.</p>
+    </div>
+    <div class="fact">
+      <span class="badge b-changed">Changes rec. 3</span>
+      <p class="said">The offer conflicts: 180-day trial in the record vs. one year and $119 on the site.</p>
+      <p class="is">The 180 days was real until Sep 10, when a database change moved the trial to 365 days to match the site. The price and trial now come from one place in the code, with an automatic check that the site, the database and Stripe agree.</p>
+      <p class="so">The offer is settled: free for 1 year, no card, then $119 a year per house, covering everyone. We can use it everywhere, including the summary page.</p>
+    </div>
+    <div class="fact">
+      <span class="badge b-changed">Changes the pricing page</span>
+      <p class="said">The billing FAQ answers need verifying.</p>
+      <p class="is">They match how the product works: no payment details at trial start, members can still view after the trial ends, renewal is yearly, and each house is billed separately.</p>
+      <p class="so">The pricing page can show real numbers and real answers instead of "the offer needs confirmation."</p>
+    </div>
+    <div class="fact">
+      <span class="badge b-right">You were right: it's a bug</span>
+      <p class="said">The main button starts setup with rotation and placeholder groups already chosen.</p>
+      <p class="is">That's not a product decision. The homepage calendar demo opens on "Take turns" with sample group names, and the main buttons pass whatever the demo shows into setup, even if the visitor never touched it. Setup then skips "How does your group share time?" entirely. The pricing button does the same.</p>
+      <p class="so">We fix it. Setup always asks how the group shares time, and only carries over a choice the visitor actually made in the demo.</p>
+    </div>
+    <div class="fact">
+      <span class="badge b-changed">Partly right: tighten the wording</span>
+      <p class="said">The great-aunt claim ("you can book for her") is unverified.</p>
+      <p class="is">The idea holds. Anyone can book dates themselves and tell someone who isn't on SplitHaus, "You're set, I've blocked those dates so nobody else takes them." What the current wording implies but can't deliver: she doesn't get her own reminders, and the calendar shows the dates under the booker's name, not hers. To have her own name and reminders, she needs an account.</p>
+      <p class="so">Keep the answer, make it exact: not everyone has to join, and you can hold dates for someone who doesn't use email. The "what does each person need to do" answer stays true for everyone who does join: make an account, pick your group, book your dates.</p>
+    </div>
+    <div class="fact">
+      <span class="badge b-changed">Changes rec. 12</span>
+      <p class="said">Measure with PostHog only. No session replay.</p>
+      <p class="is">PostHog is built in but turned off in production. What actually runs is our own first-party funnel tracking, Hotjar on marketing pages only (which does record sessions), and Cloudflare.</p>
+      <p class="so">Any measurement plan should start from the tools we actually run. Whether to keep Hotjar recordings is worth deciding on its own.</p>
+    </div>
+  </div>
+</section>
+
+<section id="differ">
+  <h2>Where I see it differently</h2>
+  <p>These are judgment calls, not facts. I could be wrong on any of them and would like your read.</p>
+  <div class="view">
+    <h3>The champion tries it before sharing it</h3>
+    <p>The review pictures the organizer reading the homepage and forwarding it to everyone who shares the house. I don't think that's how it goes. The person who finds us is the champion, and before they bring anything to the group they want to know it will actually work for their house: our groups, our turns, our August. Only then do they put their name behind it. Recommending something that later falls apart costs them standing with the people they share with.</p>
+    <p>So the site and the proposal page have different jobs. <strong>The marketing site is for the champion:</strong> convince them it's worth trying, and let setup show them it fits their house. <strong>The new proposal page is for getting the group aligned:</strong> built from that setup, it shows everyone else their own house, not our generic pitch. That changes some recommendations. Setup is part of evaluating, not something to hold back, and the homepage doesn't need to persuade relatives who were never going to land on it.</p>
+  </div>
+  <div class="view">
+    <h3>The headline: say what a calendar can't do</h3>
+    <p>"A shared calendar for your family's house." puts us in the same bucket as Google Calendar, which is what most groups already use and what my own story says didn't work. Here's the position I'd like us to hold for any headline:</p>
+    <ul style="margin:0;padding-left:1.1rem;display:grid;gap:.3rem">
+      <li>It says what SplitHaus does that a calendar doesn't: everyone gets their fair share of time, and time nobody uses goes to someone who wants it.</li>
+      <li>It works for friends who own together as well as families.</li>
+      <li>Plain, literal words. No idioms like "headache" or "drama" that some readers take differently.</li>
+      <li>It isn't only a brand line; a stranger can tell what it is.</li>
+    </ul>
+    <p>We already wrote the line that makes this argument. It was on our homepage in July, under "Why it works," and got cut in August:</p>
+    <blockquote style="margin:0;padding:.2rem 0 .2rem 1rem;border-left:3px solid var(--accent);font-family:var(--serif);font-size:1.15rem;line-height:1.45">"A plain calendar just shows who booked what. SplitHaus fits how you actually share the house, tracks who's used their time, and keeps it from sitting empty when someone could be there."</blockquote>
+    <p>That's the difference from Google Calendar in one breath, and it's why I don't want "shared calendar" to be the headline. My lean is to move <strong>"Everyone gets their time. The house stays full."</strong> to the hero, already on our mail pieces, and bring the July line back as the subhead (tightened for length). The eyebrow ("For shared vacation homes") carries the category. I'm open to a better line, as long as it holds to the position above.</p>
+  </div>
+  <div class="view">
+    <h3>Not just families</h3>
+    <p>The review and the prototype frame everything as family: "your family's house", the family summary, relatives. That fits my house, but plenty of places are shared by friends who bought together, or by a mix of siblings and friends. The product is already neutral: groups can be named anything, and the words for "group" and "member" can be changed for each house. I'd like the site to match: "everyone who shares the house", "your group", co-owners. Family can still show up as one example among others.</p>
+  </div>
+  <div class="view">
+    <h3>The caveats ended up in the customer copy</h3>
+    <p>The prototype's pages say things like "An equal-length example does not establish an equal-share policy, prove fairness..." and put "not a guarantee of fairness" under my founder story. I understand where that came from: the review was careful not to claim what it couldn't verify. But a relative reading it hears "even the company isn't sure." Now that most of the gaps are verified, I'd like the page to answer plainly and warmly, and keep the caveats in our working notes.</p>
+  </div>
+  <div class="view">
+    <h3>Fairness is the product, not a claim to cut</h3>
+    <p>Fair turns and a house that doesn't sit empty are the two things SplitHaus is built around, and features back both (Match, trades, reopening unused dates). I agree with dropping anything that sounds like a guarantee. I'd keep the positioning.</p>
+  </div>
+  <div class="view">
+    <h3>Keep the interactive calendar, add a plain caption</h3>
+    <p>"Group A / B / C" rows are safe but they don't show the product. The live demo with named groups does. A one-line caption can say what's going on without replacing it.</p>
+  </div>
+  <div class="view">
+    <h3>Shared costs is a paid add-on, not a conflict to resolve</h3>
+    <p>I built it on purpose. I'm happy to move it further down the page. I don't think it needs a founder decision to reconcile it with a category definition.</p>
+  </div>
+</section>
+
+<section id="idea">
+  <h2>Building on your summary page</h2>
+  <p>Your /share page is the right shape: what this is, what it costs, what each person does, and questions to talk over. It has one limit. A generic page can ask "What about our usual August week?" but it can't answer it, because it doesn't know their house.</p>
+  <div class="proposal">
+    <div class="split">
+      <div class="txt">
+        <h3>A summary made from their own house</h3>
+        <p>The organizer signs up (free, no card) and sets up the house the way they think it should work: the groups, the sharing style, and the weeks they always keep. Then they send a private link. Everyone else sees <em>their</em> names on <em>their</em> weeks without making an account, and join if it looks right.</p>
+        <p>It keeps everything your summary does: the explanation, the cost, what each person does, and the organizer's own note. It adds the one thing a generic page can't show, which is what happens to their August.</p>
+        <p>It also isn't wasted work. If the group says yes, the setup becomes the real house.</p>
+        <p class="cap">Privacy: a hard-to-guess link the organizer can turn off, with an optional code, kept out of search, and a preview image with no names. No comments or voting on the page. The conversation stays wherever the group already talks.</p>
+      </div>
+      <div class="phone-col">
+        <div class="phone" aria-label="Sketch of a tailored summary">
+          <div class="bar"><span class="brand">SplitHaus</span><span class="draft-chip">Draft plan</span></div>
+          <p class="t">Here's how the Oregon Coast House could work</p>
+          <p class="muted" style="font-size:.82rem">Dan put this together. Nothing is booked yet.</p>
+          <div class="blk"><b>How we'd share</b><span>A week at a time, taking turns:</span>
+            <div class="chips"><span class="chip ga">Murphys</span><span class="chip gb">Priya &amp; Sam</span><span class="chip gc">Steads</span></div></div>
+          <div class="blk"><b>August 2027</b><div class="cal" id="cal"></div><span style="font-size:.78rem">Kept as always: the Murphys, Aug 1–7</span></div>
+          <div class="blk"><b>What it costs</b><span>Free until Sept 2027, then $119 a year for the whole house.</span></div>
+          <div class="blk"><b>What you'd do</b><span>Make an account, pick your group, book when Dan opens booking.</span></div>
+          <div class="blk"><span class="btn">Join the Oregon Coast House</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="compare">
+    <table>
+      <thead><tr><th></th><th>Your summary page</th><th>Tailored proposal</th></tr></thead>
+      <tbody>
+        <tr><td>Who it's for</td><td>Any group, before anyone signs up</td><td>One house, after the organizer signs up</td></tr>
+        <tr><td>August question</td><td>Asks it</td><td>Shows the answer on their calendar</td></tr>
+        <tr><td>Cost and effort</td><td>General answers</td><td>Same answers, plus who is paying</td></tr>
+        <tr><td>Organizer effort</td><td>None, just forward it</td><td>A few minutes of setup first</td></tr>
+        <tr><td>After "yes"</td><td>Someone still sets up the house</td><td>The house already exists</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Two pages, two readers. The marketing site is for the champion. The proposal page is for getting the group aligned. A public generic summary would sit between them, and I'm not sure it earns its place (question 2). That's the main question I want your view on before anything gets built.</p>
+</section>
+
+<section id="asks">
+  <h2>What I need from you</h2>
+  <ol class="asks">
+    <li><b>Does the champion-tries-it-first order match what you've seen?</b>Or do you think organizers really do forward the homepage before trying anything? Your answer decides whether we build a generic summary, a tailored proposal, or both.</li>
+    <li><b>Generic summary: keep it, shrink it, or drop it?</b>With a tailored page, do we still need a public /share, or does a short "What is SplitHaus?" section on the homepage cover it?</li>
+    <li><b>Do the fact corrections change any of your top recommendations</b> beyond the ones I noted? In particular, whether separate /how and /pricing pages are still worth building.</li>
+    <li><b>Tone.</b>Are you comfortable with answers stated plainly now that they're verified, instead of carrying the review's caveats into the copy?</li>
+    <li><b>Where do we disagree most?</b>If one of my "differently" points feels wrong, I'd rather hear it now.</li>
+    <li><b>The headline position.</b>Do you agree with the four rules for a headline? If so, does "Everyone gets their time. The house stays full." work for you, or is there a line that fits them better?</li>
+  </ol>
+</section>
+
+<section id="next">
+  <h2>Suggested next steps</h2>
+  <div class="steps">
+    <div class="stepline"><span>Now</span><p>I fix the setup bug. It doesn't need a product decision.</p></div>
+    <div class="stepline"><span>First</span><p>We talk this through and agree on direction. Nothing else gets built before that.</p></div>
+    <div class="stepline"><span>Then</span><p>The homepage fixes we already agree on: the headline we pick together, shared costs out of the hero, the great-aunt and "however you share" copy. Small and low risk.</p></div>
+    <div class="stepline"><span>Then</span><p>Test with 3 to 5 real groups (families and friends), with a different question for each reader. <strong>The proposal page</strong> (clickable mock), shown to the people who would receive it: your question, "What would you text the person who sent you this?" Someone did send it, and their reply shows whether they understood the plan, the cost and their part. <strong>The homepage</strong>, shown to someone who would organize their own house: "What does this do, and would you try setting up your house with it?" Nobody sent them the homepage, so your question doesn't fit there.</p></div>
+    <div class="stepline"><span>Then</span><p>Build whichever version of the summary that test supports.</p></div>
+  </div>
+  <p class="sign">Thanks again. This was careful work and it pointed at the right thing.<br>Dan</p>
+</section>
+</div>
+
+<script>
+(function(){
+  var cal=document.getElementById('cal'); if(!cal) return;
+  ['S','M','T','W','T','F','S'].forEach(function(d){var e=document.createElement('div');e.className='dow';e.textContent=d;cal.appendChild(e);});
+  var order=['ga','gb','gc'];
+  for(var day=1;day<=31;day++){
+    var e=document.createElement('div'), wk=Math.floor((day-1)/7);
+    e.className='d '+order[wk%3]+(wk===0?' fixed':'');
+    e.textContent=day; cal.appendChild(e);
+  }
+})();
+</script>
+
+</html>

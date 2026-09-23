@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proposal Page Examples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Light-only: pages opened from a text are marketing surfaces; dark mode belongs to the signed-in app. */
+:root{
+  color-scheme:light;
+  --cream:#faf6ef; --cream-dark:#f0e9dc; --paper:#fffdf9; --navy:#10242b; --navy-2:#1c3b44;
+  --muted:#5b6b6b; --line:#e7ddcc; --rule:#d8cab0; --terra:#c05c3e; --terra-deep:#a84e32; --terra-wash:#fbeee8;
+  --serif:'Newsreader','Iowan Old Style',Palatino,Georgia,serif;
+  --sans:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;
+  --sheet-shadow:0 1px 0 rgb(16 36 43 / .04),0 24px 48px -30px rgb(16 36 43 / .45);
+}
+*{box-sizing:border-box}
+body{background:var(--cream-dark);color:var(--navy);font:16px/1.6 var(--sans);margin:0;padding-inline:16px;padding-block:40px 72px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+
+/* ---------- page around the examples ---------- */
+.wrap{max-width:1220px;margin:0 auto}
+.intro{max-width:64ch;display:grid;gap:.6rem;margin-bottom:2.2rem}
+.intro .k{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.intro h1{font-size:clamp(1.9rem,4vw,2.6rem)}
+.intro p{color:var(--navy-2)}
+.grid{display:flex;flex-wrap:wrap;gap:2.2rem;justify-content:center;align-items:flex-start}
+.col{flex:1 1 340px;max-width:372px;display:grid;gap:.9rem}
+.col-head{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem}
+.col-head h2{font-size:1.3rem}
+.col-head span{font-size:.8rem;color:var(--muted)}
+.why{font-size:.9rem;color:var(--navy-2);border-left:3px solid var(--terra);padding-left:.8rem}
+
+/* ---------- the phone shows a sheet of paper ---------- */
+.phone{background:var(--cream-dark);border:1px solid var(--line);border-radius:32px;overflow:hidden;box-shadow:0 30px 60px -36px rgb(16 36 43 / .5)}
+.screen{height:min(780px,84vh);overflow-y:auto;overscroll-behavior:contain;padding:14px 10px 18px;scrollbar-width:thin}
+.sheet{background:var(--paper);border-radius:6px;box-shadow:var(--sheet-shadow);padding:22px 20px 18px}
+
+.kicker{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.letter{margin-top:12px;font-family:var(--serif);font-size:1.4rem;line-height:1.38;letter-spacing:-.005em;color:var(--navy);text-wrap:pretty}
+.letter p+p{margin-top:.6em}
+.sig{margin-top:.6rem;font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--navy-2)}
+
+.part{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);display:grid;gap:10px}
+.part h2{font-size:1.2rem}
+.part p.b{font-size:.94rem;color:var(--navy-2)}
+.part p.s{font-size:.84rem;color:var(--muted)}
+
+.find{display:grid;gap:6px}
+.find p{font-size:.82rem;font-weight:700}
+.who{display:flex;flex-wrap:wrap;gap:6px}
+.who button{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 13px 0 10px;border-radius:99px;border:1.5px solid var(--line);background:var(--paper);color:var(--navy);font-size:.86rem;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s}
+.who button i{width:11px;height:11px;border-radius:50%;flex:none}
+.who button[aria-checked="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
+.who button[aria-checked="true"] i{box-shadow:0 0 0 2px #fff}
+.yours{font-size:.92rem;font-weight:600;background:var(--terra-wash);border-radius:10px;padding:.55rem .75rem}
+.yours[hidden]{display:none}
+
+/* calendar: drawn like the product's setup calendar and the homepage demo */
+.rcal{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:8px}
+.rtabs{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px}
+.rtab{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 6px 7px;font-size:.8rem;font-weight:600;color:var(--navy);cursor:pointer;display:grid;gap:5px;min-height:44px}
+.rtab[aria-selected="true"]{border-color:var(--terra);background:var(--terra-wash)}
+.strip{display:flex;height:4px;border-radius:2px;overflow:hidden}
+.strip i{flex:1}
+.rhead{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.rgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
+.rgrid .dow{font-size:.62rem;font-weight:700;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+.rgrid .d{height:2rem;display:flex;align-items:center;justify-content:center;border-radius:5px;font-size:.76rem;font-weight:500;font-variant-numeric:tabular-nums;color:#fff;transition:opacity .15s}
+.rgrid .none{background:var(--cream);border:1px solid var(--line);color:var(--muted)}
+.rgrid .pad{background:transparent}
+.rgrid .keep{box-shadow:inset 0 0 0 2px #f3d9a0}
+.rgrid .dim{opacity:.28}
+.leg{display:flex;flex-wrap:wrap;gap:.35rem .9rem}
+.leg span{display:flex;align-items:center;gap:.35rem;font-size:.76rem;font-weight:500;color:var(--navy-2)}
+.leg i{width:10px;height:10px;border-radius:3px}
+
+/* draft pick order */
+.order{display:grid;grid-template-columns:auto repeat(3,1fr);gap:4px;align-items:center}
+.order .rl{font-size:.66rem;font-weight:700;color:var(--muted);padding-right:.3rem;white-space:nowrap}
+.order .p{border-radius:7px;padding:.45rem .2rem;text-align:center;font-size:.74rem;font-weight:700;color:#fff;transition:opacity .15s}
+.order .dim{opacity:.28}
+
+/* stays the same / gets easier */
+ul.ticks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.ticks li{position:relative;padding-left:1.5rem;font-size:.93rem;color:var(--navy-2)}
+ul.ticks li::before{content:"";position:absolute;left:.15rem;top:.5rem;width:.6rem;height:.32rem;border-left:2px solid #356f66;border-bottom:2px solid #356f66;transform:rotate(-45deg)}
+ul.lines{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.lines li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:.93rem;color:var(--navy-2)}
+ul.lines svg{width:28px;height:28px;padding:5px;border-radius:8px;background:var(--cream);stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* the ask, once, at the end */
+.ask{margin-top:24px;padding:18px 16px 16px;border-radius:12px;background:var(--cream);border:1px solid var(--line);display:grid;gap:10px}
+.ask h2{font-size:1.3rem}
+.ask p{font-size:.92rem;color:var(--navy-2)}
+.join{display:flex;justify-content:center;align-items:center;min-height:50px;border:0;border-radius:12px;background:var(--terra);color:#fff;font-size:1rem;font-weight:700;cursor:pointer}
+.join:hover{background:var(--terra-deep)}
+.ask small{font-size:.78rem;color:var(--muted);text-align:center}
+.alt{margin-top:16px;font-size:.86rem;color:var(--navy-2);text-align:center}
+.alt a{color:var(--terra);font-weight:600;text-underline-offset:3px}
+.made{margin-top:14px;text-align:center;font-size:.72rem;color:var(--muted)}
+.made b{font-family:var(--serif);font-weight:600;color:var(--navy)}
+.made b span{color:var(--terra)}
+
+.notes{max-width:68ch;margin:3.2rem auto 0;display:grid;gap:.8rem}
+.notes h2{font-size:1.5rem}
+.notes ul{margin:0;padding-left:1.15rem;display:grid;gap:.55rem;color:var(--navy-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* state switch (mockup control, not part of the page) */
+.state{display:flex;gap:4px;background:#e7ddcc;border-radius:10px;padding:3px}
+.state button{flex:1;min-height:36px;border:0;border-radius:8px;background:transparent;font-size:.8rem;font-weight:600;color:var(--navy-2);cursor:pointer}
+.state button[aria-pressed="true"]{background:#fff;color:var(--navy);box-shadow:0 1px 2px rgb(16 36 43 / .15)}
+.ask > div{display:grid;gap:10px}
+.ask.top{margin-top:12px;margin-bottom:6px;padding:12px;background:var(--terra-wash);border-color:#efcbbd}
+.ask [hidden]{display:none}
+
+/* match: ratings and outcome in one grid */
+.mx{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:9px}
+.mx-aha{font-size:.9rem;font-weight:600;line-height:1.35;color:var(--navy)}
+.mx-grid{display:grid;grid-template-columns:minmax(0,1.35fr) repeat(4,minmax(0,1fr));gap:3px;align-items:center;font-size:.72rem}
+.mx-grid .h{font-size:.64rem;font-weight:700;color:var(--muted);text-align:center;line-height:1.2}
+.mx-grid .n{display:flex;align-items:center;gap:5px;font-weight:600;font-size:.74rem;min-width:0;transition:opacity .15s}
+.mx-grid .n i{width:8px;height:8px;border-radius:50%;flex:none}
+.mx-grid .n span{line-height:1.15}
+.mx-grid .c{height:1.9rem;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:600;background:var(--cream);color:var(--navy-2);transition:opacity .15s}
+.mx-grid .c.t1{font-weight:800;color:var(--navy)}
+.mx-grid .c.t5{color:var(--muted);background:transparent;border:1px dashed var(--line);font-weight:500}
+.mx-grid .c.got{color:#fff;font-weight:800}
+.mx-grid .c.got::before,.mx-key .ck::before{content:"\2713";margin-right:3px;font-weight:800}
+.mx-grid .c{white-space:nowrap}
+.mx-grid .dim{opacity:.3}
+.mx-key{font-size:.74rem;color:var(--muted)}
+.mx-key .ck::before{color:var(--navy)}
+
+/* grid and calendar point at each other */
+.mx-grid button.h{border:0;background:transparent;font:inherit;font-size:.64rem;font-weight:700;color:var(--muted);line-height:1.2;padding:.25rem 0;border-radius:6px;cursor:pointer;min-height:36px}
+.mx-grid button.h.on{color:var(--terra-deep);background:var(--terra-wash)}
+.mx-grid .c.on{box-shadow:inset 0 0 0 1.5px #e6b54a}
+.rgrid .mark{cursor:pointer}
+.rgrid .mark.focus{outline:2px solid var(--navy);outline-offset:1px;z-index:1}
+
+.mx-grid .c.empty{background:transparent;border:1px dashed #efe6d6}
+.mx-grid .c.pk{font-size:.68rem}
+.part > .mx-aha{font-size:.9rem;font-weight:600;line-height:1.35;color:var(--navy)}
+</style>
+
+<div class="wrap">
+<header class="intro">
+  <span class="k">Proposal pages · mockups</span>
+  <h1>A proposal, in the organizer's words</h1>
+  <p>What someone sees after tapping the link a person in their group texted them. It reads as the organizer's proposal: their note first, then the idea with a calendar, once the schedule is set, when plans change, and what happens next. The switch above each phone shows the same link after the organizer opens joining. Tap a group on any page to see it from that person's side: their weeks in the rotation, their turn in the draft, their share in Match.</p>
+</header>
+
+<div class="grid">
+
+<!-- ================= ROTATION ================= -->
+<div class="col">
+  <div class="col-head"><h2>Taking turns</h2><span>a rotation the group already uses</span></div>
+  <div class="state" role="group" aria-label="Page state"><button type="button" aria-pressed="true" data-for="rotation" data-set="proposing">While proposing</button><button type="button" aria-pressed="false" data-for="rotation" data-set="open">After joining opens</button></div>
+  <div class="phone" data-page="rotation"><div class="screen"><article class="sheet">
+    <p class="kicker" data-kicker="Oregon Coast House">Proposal · Oregon Coast House</p>
+    <div class="letter"><p role="heading" aria-level="1">I set this up with the order we already use, so nothing about whose week is whose changes. It just means one place to see it, and trades that don't get lost in the group text. Does it look right to you?</p><p class="sig">Dan</p></div>
+
+    <section class="part">
+      <h2>The idea</h2>
+      <p class="b">We take turns, a week at a time. One week is set aside for the Murphys.</p>
+      <div class="find"><p>Tap your group to see your weeks</p><div class="who" role="radiogroup" aria-label="Your group"></div></div>
+      <div class="rcal" aria-label="Preview of the proposed rotation">
+        <div class="rtabs" role="tablist"></div>
+        <p class="rhead"></p>
+        <div class="rgrid"></div>
+        <div class="leg"></div>
+      </div>
+      <p class="yours" hidden></p>
+    </section>
+
+
+    <section class="part"><h2>Once the schedule is set</h2><ul class="lines" data-daily></ul></section>
+    <section class="part"><h2>When plans change</h2><ul class="lines" data-lines></ul></section>
+
+    <section class="part"><h2>What it costs</h2><p class="b">Free for a year, then $119 a year for the house, about $40 each.</p></section>
+
+    <section class="ask" data-ask data-house="the Oregon Coast House">
+      <div data-state="proposing">
+        <h2>What happens next</h2>
+        <p>Once we've talked it over, you can join from this link.</p>
+      </div>
+      <div data-state="open" hidden>
+        <button class="join" type="button">Join the Oregon Coast House</button>
+      </div>
+    </section>
+    <p class="alt">Prefer another way to share? <a href="https://splithaus.com/#how-sharing">See the other options</a></p>
+    <p class="made">Made with <b>Split<span>Haus</span></b></p>
+  </article></div></div>
+  <p class="why">The calendar is the real preview from setup, and tapping your group answers "what do I get?" in one tap. Anything about how the group did it before stays in Dan's own words.</p>
+</div>
+
+<!-- ================= DRAFT ================= -->
+<div class="col">
+  <div class="col-head"><h2>Draft</h2><span>a group that picks each year</span></div>
+  <div class="state" role="group" aria-label="Page state"><button type="button" aria-pressed="true" data-for="draft" data-set="proposing">While proposing</button><button type="button" aria-pressed="false" data-for="draft" data-set="open">After joining opens</button></div>
+  <div class="phone" data-page="draft"><div class="screen"><article class="sheet">
+    <p class="kicker" data-kicker="Tahoe Cabin">Proposal · Tahoe Cabin</p>
+    <div class="letter"><p role="heading" aria-level="1">Same draft we do every spring, just not on a spreadsheet. The order still flips each round, and you can pick when your turn comes instead of all being on the phone at once.</p><p class="sig">Priya</p></div>
+
+    <section class="part">
+      <h2>The idea</h2>
+      <p class="b">We take turns picking our time, round by round.</p>
+      <div class="find"><p>Tap your group to see your turn</p><div class="who" role="radiogroup" aria-label="Your group"></div></div>
+      <div class="order" aria-label="Pick order"></div>
+      <p class="yours" hidden></p>
+      <div class="mx" aria-label="Example: which pick took each week">
+        <div class="mx-grid" role="table"></div>
+      </div>
+      <div class="rcal" aria-label="Example of the calendar after the draft">
+        <div class="rtabs" role="tablist"></div>
+        <p class="rhead"></p>
+        <div class="rgrid"></div>
+        <div class="leg"></div>
+      </div>
+    </section>
+
+
+    <section class="part"><h2>Once the schedule is set</h2><ul class="lines" data-daily></ul></section>
+    <section class="part"><h2>When plans change</h2><ul class="lines" data-lines></ul></section>
+
+    <section class="part"><h2>What it costs</h2><p class="b">Free for a year, then $119 a year for the cabin, about $40 each.</p></section>
+
+    <section class="ask" data-ask data-house="Tahoe Cabin">
+      <div data-state="proposing">
+        <h2>What happens next</h2>
+        <p>Once we've talked it over, you can join from this link.</p>
+      </div>
+      <div data-state="open" hidden>
+        <button class="join" type="button">Join Tahoe Cabin</button>
+      </div>
+    </section>
+    <p class="alt">Prefer another way to share? <a href="https://splithaus.com/#how-sharing">See the other options</a></p>
+    <p class="made">Made with <b>Split<span>Haus</span></b></p>
+  </article></div></div>
+  <p class="why">Same idea as Match: change the month and the grid shows which pick took each week. The pick numbers explain themselves, so there's no commentary. Tap a week in either the grid or the calendar to find it in the other.</p>
+</div>
+
+<!-- ================= MATCH ================= -->
+<div class="col">
+  <div class="col-head"><h2>SplitHaus Match</h2><span>four friends, no draft night</span></div>
+  <div class="state" role="group" aria-label="Page state"><button type="button" aria-pressed="true" data-for="match" data-set="proposing">While proposing</button><button type="button" aria-pressed="false" data-for="match" data-set="open">After joining opens</button></div>
+  <div class="phone" data-page="match"><div class="screen"><article class="sheet">
+    <p class="kicker" data-kicker="Sun Valley Condo">Proposal · Sun Valley Condo</p>
+    <div class="letter"><p role="heading" aria-level="1">No more 40-message thread. We each rate the weeks, and it works out a split that gives everyone their share, with the weeks we care about most first.</p><p class="sig">Marcus</p></div>
+
+    <section class="part">
+      <h2>The idea</h2>
+      <p class="b">We each rate the weeks, from Must have to Can't go. When some of us want the same week, SplitHaus weighs our ratings so we each get weeks we want.</p>
+      <div class="find"><p>Tap your name to see your weeks</p><div class="who" role="radiogroup" aria-label="Your group"></div></div>
+      <div class="mx" aria-label="Example: ratings and the week each group got">
+        <p class="mx-aha" aria-live="polite"></p>
+        <div class="mx-grid" role="table"></div>
+      </div>
+      <div class="rcal" aria-label="Example of the schedule Match builds">
+        <div class="rtabs" role="tablist"></div>
+        <p class="rhead"></p>
+        <div class="rgrid"></div>
+        <div class="leg"></div>
+      </div>
+      <p class="yours" hidden></p>
+    </section>
+
+
+    <section class="part"><h2>Once the schedule is set</h2><ul class="lines" data-daily></ul></section>
+    <section class="part"><h2>When plans change</h2><ul class="lines" data-lines></ul></section>
+
+    <section class="part"><h2>What it costs</h2><p class="b">Free for a year, then $119 a year for the condo, about $30 each.</p></section>
+
+    <section class="ask" data-ask data-house="Sun Valley Condo">
+      <div data-state="proposing">
+        <h2>What happens next</h2>
+        <p>Once we've talked it over, you can join from this link.</p>
+      </div>
+      <div data-state="open" hidden>
+        <button class="join" type="button">Join Sun Valley Condo</button>
+      </div>
+    </section>
+    <p class="alt">Prefer another way to share? <a href="https://splithaus.com/#how-sharing">See the other options</a></p>
+    <p class="made">Made with <b>Split<span>Haus</span></b></p>
+  </article></div></div>
+  <p class="why">Change the month and the grid shows the ratings behind that month's schedule. Tap a week in either one to find it in the other. One small grid shows ratings becoming a schedule: each row is a group's ratings, and the ✓ marks the week they got. Two groups wanted the holiday week, and both still got a week they wanted.</p>
+</div>
+
+</div>
+
+<section class="notes">
+  <h2>What changed in this pass</h2>
+  <ul>
+    <li><b>No title. The organizer's note is the headline.</b> Every generated title sounded like SplitHaus or a slogan, so the page opens with "Proposal · [house]" and then the note, set large. Nothing to edit or get wrong.</li>
+    <li><b>It reads as a proposal, not a pitch.</b> it's written as "we" and "our," and SplitHaus appears only as "Made with SplitHaus" at the end.</li>
+    <li><b>Only what setup knows.</b> SplitHaus doesn't know a group's history, so generated lines never claim it. Setup has no "we already use this order" answer for a rotation, so there's no "What stays the same" section. Anything about the past is in the organizer's own note.</li>
+    <li><b>Agreeing and joining are separate.</b> While the organizer is proposing, the page ends with "What happens next": once we've talked it over, they'll open it up and you can join from the same link. No button, so nobody commits alone and nobody is the visible holdout. When the organizer turns joining on (a switch the organizer already has), a Join button moves to the top of the same page, with "Join the Oregon Coast House," or "Join as the Steads" after you tap your group. The proposal stays below for reference. Use the switch above each phone to see both.</li>
+    <li><b>A way to look, not a way to answer back.</b> A quiet link under the ending, "See how else SplitHaus can work," opens the homepage demo of every sharing style. Someone who likes SplitHaus but not this plan can bring "what about a draft?" to the conversation. There's no counter-proposal feature, on purpose. It also reaches people who may want SplitHaus for a house of their own.</li>
+    <li><b>The tap prompt only promises what's real:</b> "see your weeks" on the rotation (a real preview), "see your turn" on the draft (the real pick order), "see your weeks" on Match (how many weeks you get). The draft and Match calendars stay labelled as examples. Nothing is dimmed until you tap a name.</li>
+    <li><b>Every page shows the calendar.</b> After a draft or a Match run, the calendar is what everyone lives in, so each page shows it: a preview for the rotation, and a labelled example for the draft and Match. Tapping your group lights up your color on all three.</li>
+    <li><b>Still proposals.</b> No deadlines, no draft night, no years. The calendar is a labelled preview.</li>
+  </ul>
+</section>
+</div>
+
+<script>
+(function(){
+  var ICON={
+    back:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>',
+    swap:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4 3 8l4 4"/><path d="M3 8h14"/><path d="m17 20 4-4-4-4"/><path d="M21 16H7"/></svg>',
+    eye:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12"/><circle cx="12" cy="12" r="3"/></svg>'
+  };
+  ICON.cal='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+  ICON.phone='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>';
+  ICON.bell='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>';
+  ICON.book='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/></svg>';
+  var DAY=864e5, mix=function(c){return 'color-mix(in srgb, '+c+' 80%, black)';}, the=function(n){return n.replace(/^The /,'the ');};
+
+  document.querySelectorAll('[data-daily]').forEach(function(ul){
+    ul.innerHTML=
+      '<li>'+ICON.cal+'<span>One calendar for all of us, always up to date.</span></li>'+
+      '<li>'+ICON.bell+'<span>A reminder before each stay.</span></li>'+
+      '<li>'+ICON.book+'<span>The house guide: wifi, closing up, and more.</span></li>';
+  });
+  document.querySelectorAll('[data-lines]').forEach(function(ul){
+    ul.innerHTML=
+      '<li>'+ICON.back+'<span>Can\'t make it? Give your dates back so someone else can go.</span></li>'+
+      '<li>'+ICON.swap+'<span>Want different dates? Ask to trade.</span></li>'+
+      '<li>'+ICON.eye+'<span>Everyone sees the change right away.</span></li>';
+  });
+
+  /* Calendar drawn the way the product draws it: month tabs with a
+     colour strip, Sunday-first grid, filled day cells, square legend swatches. Years are never shown. */
+  function Calendar(root, o){
+    var tabs=root.querySelector('.rtabs'), grid=root.querySelector('.rgrid'), head=root.querySelector('.rhead'), leg=root.querySelector('.leg');
+    var cur=o.startMonth, sel=null, focus=null, marks=o.marks||[], self=this;
+    var dim=function(y,m){return new Date(Date.UTC(y,m+1,0)).getUTCDate();};
+    o.months.forEach(function(mo,idx){
+      var b=document.createElement('button'); b.type='button'; b.className='rtab'; b.setAttribute('role','tab');
+      var st='<span class="strip">';
+      for(var d=1;d<=dim(mo.y,mo.m);d+=3){var w=o.owner(Date.UTC(mo.y,mo.m,d)); st+='<i style="background:'+(w&&w.g!=null?o.groups[w.g].c:'#f0e9dc')+'"></i>';}
+      b.innerHTML=mo.l+st+'</span>'; b.addEventListener('click',function(){cur=idx;focus=null;draw();if(o.onMonth)o.onMonth(cur);}); tabs.appendChild(b);
+    });
+    o.groups.forEach(function(g){leg.insertAdjacentHTML('beforeend','<span><i style="background:'+mix(g.c)+'"></i>'+g.n+'</span>');});
+    if(o.keepLabel) leg.insertAdjacentHTML('beforeend','<span><i style="background:#fff;box-shadow:inset 0 0 0 2px #e6c98c"></i>'+o.keepLabel+'</span>');
+    if(o.openLabel) leg.insertAdjacentHTML('beforeend','<span><i style="background:#faf6ef;box-shadow:inset 0 0 0 1px #e7ddcc"></i>'+o.openLabel+'</span>');
+    if(o.markLabel) leg.insertAdjacentHTML('beforeend','<span><i style="background:#fff;box-shadow:inset 0 -3px 0 #e6b54a,inset 0 0 0 1px #e7ddcc"></i>'+o.markLabel+'</span>');
+    grid.addEventListener('click',function(e){var c=e.target.closest('[data-key]'); if(!c) return; var k=+c.getAttribute('data-key'); if(marks.indexOf(k)<0) return; focus=k; draw(); if(o.onWeek)o.onWeek(k);});
+    function draw(){
+      var mo=o.months[cur];
+      [].forEach.call(tabs.children,function(b,i){b.setAttribute('aria-selected',i===cur?'true':'false');});
+      head.textContent=o.label+' · '+mo.l;
+      var h=''; ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(function(d){h+='<div class="dow">'+d+'</div>';});
+      for(var k=0,lead=new Date(Date.UTC(mo.y,mo.m,1)).getUTCDay();k<lead;k++) h+='<div class="d pad"></div>';
+      for(var d=1;d<=dim(mo.y,mo.m);d++){
+        var w=o.owner(Date.UTC(mo.y,mo.m,d));
+        if(!w||w.g==null){h+='<div class="d none">'+d+'</div>';continue;}
+        var mk=marks.indexOf(w.key)>=0;
+        h+='<div class="d'+(w.keep?' keep':'')+(mk?' mark':'')+(mk&&w.key===focus?' focus':'')+(sel!==null&&w.g!==sel?' dim':'')+'" style="background:'+mix(o.groups[w.g].c)+'" title="'+o.groups[w.g].n+'"'+(mk?' data-key="'+w.key+'"':'')+'>'+d+'</div>';
+      }
+      grid.innerHTML=h;
+    }
+    this.select=function(s){sel=s;draw();};
+    this.show=function(monthIdx,key){cur=monthIdx;focus=key;draw();};
+    this.month=function(){return cur;};
+    this.weeks=function(g){var seen={},t,w; for(t=o.from;t<=o.to;t+=DAY){w=o.owner(t); if(w&&w.g===g) seen[w.key]=1;} return Object.keys(seen).length;};
+    draw();
+  }
+  // Tab index holding most of a 7-day block's days.
+  function majorityMonth(t0, months){
+    var count={}; for(var d=0;d<7;d++){var t=new Date(t0+d*DAY), k=t.getUTCFullYear()*12+t.getUTCMonth(); count[k]=(count[k]||0)+1;}
+    var best=null; Object.keys(count).forEach(function(k){if(best===null||count[k]>count[best])best=k;});
+    return months.findIndex(function(mo){return mo.y*12+mo.m===+best;});
+  }
+  var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function weekLabel(t0){
+    var a=new Date(t0), z=new Date(t0+6*DAY);
+    return a.getUTCMonth()===z.getUTCMonth() ? [MON[a.getUTCMonth()], a.getUTCDate()+' - '+z.getUTCDate()] : [MON[a.getUTCMonth()]+' '+a.getUTCDate()+' -', MON[z.getUTCMonth()]+' '+z.getUTCDate()];
+  }
+  // Weekly blocks from a Friday start; plan[i] is the group for week i (null = open to book).
+  function weekly(start, plan){
+    return function(t){ if(t<start) return null; var i=Math.floor((t-start)/(7*DAY)); if(i>=plan.length) return null; return {g:plan[i],key:i}; };
+  }
+
+  function setupPage(page, groups, onPick){
+    var root=document.querySelector('[data-page="'+page+'"]');
+    var who=root.querySelector('.who'), join=root.querySelector('.join');
+    var house=root.querySelector('[data-ask]').getAttribute('data-house');
+    groups.forEach(function(g,i){
+      var b=document.createElement('button'); b.type='button'; b.setAttribute('role','radio'); b.setAttribute('aria-checked','false');
+      b.innerHTML='<i style="background:'+g.c+'"></i>'+g.n;
+      b.addEventListener('click',function(){
+        var on=b.getAttribute('aria-checked')!=='true';
+        [].forEach.call(who.children,function(x){x.setAttribute('aria-checked','false');});
+        if(on) b.setAttribute('aria-checked','true');
+        var sel=on?i:null;
+        join.textContent=sel===null?'Join '+house:'Join as '+the(g.n);
+        onPick(sel);
+      });
+      who.appendChild(b);
+    });
+    return root;
+  }
+  // Mockup-only switch between the two states of the same link.
+  document.querySelectorAll('.state button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var page=btn.getAttribute('data-for'), open=btn.getAttribute('data-set')==='open';
+      var root=document.querySelector('[data-page="'+page+'"]');
+      btn.parentNode.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===btn?'true':'false');});
+      root.querySelector('[data-state="proposing"]').hidden=open;
+      root.querySelector('[data-state="open"]').hidden=!open;
+      var k=root.querySelector('[data-kicker]'), house=k.getAttribute('data-kicker');
+      k.textContent=open?house:'Proposal · '+house;
+      // Once joining is open, joining leads the page and the proposal below becomes reference.
+      var ask=root.querySelector('[data-ask]'), sheet=root.querySelector('.sheet'), alt=root.querySelector('.alt');
+      if(open){ k.after(ask); ask.classList.add('top'); root.querySelector('.screen').scrollTop=0; }
+      else { alt.before(ask); ask.classList.remove('top'); }
+    });
+  });
+  function say(el, text){ if(text==null){el.hidden=true;} else {el.hidden=false; el.textContent=text;} }
+
+  /* ---------- rotation (preview) ---------- */
+  (function(){
+    var G=[{n:'The Murphys',c:'#c05c3e'},{n:'The Garcias',c:'#356f66'},{n:'The Steads',c:'#1a3a4a'}];
+    var Y=2027, start=Date.UTC(Y,5,4), keepA=Date.UTC(Y,6,2), keepB=Date.UTC(Y,6,8);
+    function owner(t){
+      if(t<start) return null;
+      if(t>=keepA&&t<=keepB) return {g:0,keep:true,key:'k'};
+      var wk=Math.floor((t-start)/(7*DAY)), kw=Math.floor((keepA-start)/(7*DAY));
+      if(wk>kw) wk-=1; // the kept week sits outside the rotation
+      return {g:wk%3,keep:false,key:wk};
+    }
+    var root, cal, yours;
+    root=setupPage('rotation',G,function(s){
+      cal.select(s);
+      say(yours, s===null?null:'You get '+cal.weeks(s)+' weeks, June to August'+(s===0?', including your set-aside week.':'.'));
+    });
+    yours=root.querySelector('.yours');
+    cal=new Calendar(root.querySelector('.rcal'),{groups:G,owner:owner,label:'Preview',keepLabel:'Set aside',
+      months:[{y:Y,m:5,l:'June'},{y:Y,m:6,l:'July'},{y:Y,m:7,l:'August'}],startMonth:1,from:start,to:Date.UTC(Y,7,31)});
+  })();
+
+  /* ---------- draft: pick order + a grid of which pick took each week, linked to the calendar ---------- */
+  (function(){
+    var G=[{n:'The Nguyens',c:'#c05c3e'},{n:'Priya & Sam',c:'#356f66'},{n:'The Kellers',c:'#1a3a4a'}];
+    var Y=2027, start=Date.UTC(Y,5,4); // 12 weeks from Friday, June 4
+    var first=[0,1,2], ord=['1st','2nd','3rd'];
+    // Picks go 1-12 in snake order (N,P,K, K,P,N, N,P,K, K,P,N). The popular July weeks go first,
+    // early June goes last. plan = who got each week; pick = which pick number took it.
+    var plan=[0,2,1,2,0,1,2,1,0,0,2,1];
+    var pick=[12,10,8,4,1,2,3,5,6,7,9,11];
+    var months=[{y:Y,m:5,l:'June'},{y:Y,m:6,l:'July'},{y:Y,m:7,l:'August'}];
+    var byMonth=months.map(function(_,mi){return plan.map(function(_,i){return i;}).filter(function(i){return majorityMonth(start+i*7*DAY,months)===mi;});});
+    var root, cal, yours, order, grid, sel=null, focusKey=null;
+    function drawOrder(){
+      var h='<span class="rl">Pick order</span>';
+      first.forEach(function(g){h+='<span class="p'+(sel!==null&&g!==sel?' dim':'')+'" style="background:'+mix(G[g].c)+'">'+G[g].n.replace(/^The /,'')+'</span>';});
+      order.innerHTML=h;
+    }
+    function drawGrid(){
+      var mi=cal.month(), weeks=byMonth[mi];
+      grid.style.gridTemplateColumns='minmax(0,1.3fr) repeat('+weeks.length+',minmax(0,1fr))';
+      var h='<span class="h" role="columnheader"></span>';
+      weeks.forEach(function(i){var l=weekLabel(start+i*7*DAY); h+='<button type="button" class="h wk'+(i===focusKey?' on':'')+'" role="columnheader" data-key="'+i+'" aria-pressed="'+(i===focusKey)+'">'+l[0]+'<br>'+l[1]+'</button>';});
+      G.forEach(function(g,gi){
+        var d=(sel!==null&&gi!==sel)?' dim':'';
+        h+='<span class="n'+d+'" role="rowheader"><i style="background:'+g.c+'"></i><span>'+g.n.replace(/^The /,'')+'</span></span>';
+        weeks.forEach(function(i){
+          var got=plan[i]===gi;
+          h+='<span class="c'+(got?' got pk':' empty')+(i===focusKey?' on':'')+d+'" role="cell"'+(got?' style="background:'+mix(g.c)+'"':'')+'>'+(got?'Pick '+pick[i]:'')+'</span>';
+        });
+      });
+      grid.innerHTML=h;
+    }
+    root=setupPage('draft',G,function(s){
+      sel=s; drawOrder(); drawGrid(); cal.select(s);
+      if(s===null){say(yours,null);return;}
+      var p=first.indexOf(s), n=first.length, next=n-1-p;
+      var how=p===next?'You pick '+ord[p]+' every round':'You pick '+ord[p]+', then '+(next===n-1?'last':ord[next])+' in the next round';
+      say(yours, how+', '+cal.weeks(s)+' weeks in all.');
+    });
+    yours=root.querySelector('.yours'); order=root.querySelector('.order'); grid=root.querySelector('.mx-grid');
+    cal=new Calendar(root.querySelector('.rcal'),{groups:G,owner:weekly(start,plan),label:'Example after the draft',
+      marks:plan.map(function(_,i){return i;}),
+      onMonth:function(){focusKey=null;drawGrid();},
+      onWeek:function(k){focusKey=k;drawGrid();},
+      months:months,startMonth:1,from:start,to:Date.UTC(Y,7,31)});
+    grid.addEventListener('click',function(e){
+      var b=e.target.closest('[data-key]'); if(!b) return;
+      focusKey=+b.getAttribute('data-key'); cal.show(cal.month(),focusKey); drawGrid();
+    });
+    drawOrder(); drawGrid();
+  })();
+
+  /* ---------- match: the grid shows the ratings behind whichever month the calendar shows ---------- */
+  (function(){
+    var G=[{n:'Marcus & Jen',c:'#c05c3e'},{n:'Dev',c:'#356f66'},{n:'Alex & Ro',c:'#1a3a4a'},{n:'Tomás',c:'#b08a3e'}];
+    var Y=2027, start=Date.UTC(Y,11,3); // 17 weeks from Friday, Dec 3, 2027 (Feb 2028 has 29 days)
+    // Who got each week. 17 weeks for 4 equal groups: three get 4, one gets 5. The group with the
+    // fifth week is picked at random (a random draw), here Alex & Ro.
+    var plan=[2,1,3,0,1,2,3,0,1,2,3,2,0,3,1,2,0];
+    // Each group's rating for every week: 1 Must have, 2 Would love, 3 Fine with, 5 Can't go.
+    // The group that got a week always rated it highly; nobody got a week they marked Can't go.
+    var R=[
+      [3,2,3,1,2,3,5,2,3,5,3,3,2,3,3,5,2], // Marcus & Jen
+      [3,2,5,2,1,3,3,3,2,3,2,3,5,3,2,3,3], // Dev
+      [2,3,3,1,2,2,3,3,5,2,3,2,3,5,3,2,3], // Alex & Ro
+      [5,3,2,3,3,5,2,3,3,3,2,3,3,1,3,3,3]  // Tomás
+    ];
+    var LABEL={1:'Must',2:'Love',3:'Fine',5:"Can't"};
+    var months=[{y:Y,m:11,l:'Dec'},{y:Y+1,m:0,l:'Jan'},{y:Y+1,m:1,l:'Feb'},{y:Y+1,m:2,l:'Mar'}];
+    function wkStart(i){return start+i*7*DAY;}
+    function label(i){ // "Dec 3 - 9", or "Dec 31 - Jan 6" across months
+      var a=new Date(wkStart(i)), z=new Date(wkStart(i)+6*DAY);
+      return a.getUTCMonth()===z.getUTCMonth() ? [MON[a.getUTCMonth()], a.getUTCDate()+' - '+z.getUTCDate()] : [MON[a.getUTCMonth()]+' '+a.getUTCDate()+' -', MON[z.getUTCMonth()]+' '+z.getUTCDate()];
+    }
+    function monthOf(i){ // the tab holding most of the week's days
+      var count={}; for(var d=0;d<7;d++){var t=new Date(wkStart(i)+d*DAY), k=t.getUTCFullYear()*12+t.getUTCMonth(); count[k]=(count[k]||0)+1;}
+      var best=null; Object.keys(count).forEach(function(k){if(best===null||count[k]>count[best])best=k;});
+      return months.findIndex(function(mo){return mo.y*12+mo.m===+best;});
+    }
+    var byMonth=months.map(function(_,mi){return plan.map(function(_,i){return i;}).filter(function(i){return monthOf(i)===mi;});});
+    // One line per month, describing what actually happened in it.
+    var WHY=[
+      'Two groups marked Dec 24 - 30 Must have. Marcus & Jen got it, and Alex & Ro got Dec 3 - 9, a week they\'d love.',
+      'Every January week went to a group that loved it, including Dev\'s Must have, New Year\'s week.',
+      'Tomás and Dev both loved Feb 11 - 17. Tomás got it, and Dev got a March week they loved. Alex & Ro got Feb 18 - 24 as a fifth week, since 17 weeks don\'t split evenly by 4.',
+      'Tomás got Mar 3 - 9, the week marked Must have. Nobody got a week they marked Can\'t go.'
+    ];
+    var root, cal, yours, grid, aha, sel=null, focusKey=null;
+    function drawGrid(){
+      var mi=cal.month(), weeks=byMonth[mi];
+      aha.textContent=WHY[mi];
+      grid.style.gridTemplateColumns='minmax(0,1.3fr) repeat('+weeks.length+',minmax(0,1fr))';
+      var h='<span class="h" role="columnheader"></span>';
+      weeks.forEach(function(i){var l=label(i); h+='<button type="button" class="h wk'+(i===focusKey?' on':'')+'" role="columnheader" data-key="'+i+'" aria-pressed="'+(i===focusKey)+'">'+l[0]+'<br>'+l[1]+'</button>';});
+      G.forEach(function(g,gi){
+        var d=(sel!==null&&gi!==sel)?' dim':'';
+        h+='<span class="n'+d+'" role="rowheader"><i style="background:'+g.c+'"></i><span>'+g.n+'</span></span>';
+        weeks.forEach(function(i){
+          var t=R[gi][i], got=plan[i]===gi;
+          h+='<span class="c t'+t+(got?' got':'')+(i===focusKey?' on':'')+d+'" role="cell"'+(got?' style="background:'+mix(g.c)+'" title="'+g.n+' got this week"':'')+'>'+LABEL[t]+'</span>';
+        });
+      });
+      grid.innerHTML=h;
+    }
+    root=setupPage('match',G,function(s){
+      sel=s; drawGrid(); cal.select(s);
+      say(yours, s===null?null:'You get '+cal.weeks(s)+' weeks.');
+    });
+    yours=root.querySelector('.yours'); grid=root.querySelector('.mx-grid'); aha=root.querySelector('.mx-aha');
+    cal=new Calendar(root.querySelector('.rcal'),{groups:G,owner:weekly(start,plan),label:'Example schedule',
+      marks:plan.map(function(_,i){return i;}),
+      onMonth:function(){focusKey=null;drawGrid();},
+      onWeek:function(k){focusKey=k;drawGrid();},
+      months:months,startMonth:0,from:start,to:Date.UTC(Y+1,2,31)});
+    grid.addEventListener('click',function(e){
+      var b=e.target.closest('[data-key]'); if(!b) return;
+      focusKey=+b.getAttribute('data-key'); cal.show(cal.month(),focusKey); drawGrid();
+    });
+    drawGrid();
+  })();
+})();
+</script>
+
+</html>
