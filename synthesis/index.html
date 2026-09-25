@@ -14715,6 +14715,25 @@ html.capacitor-native {
     .live-widget :is(h1,h2,h3,p):not(.live-example-title){margin:revert-layer}
     .live-widget :is(h1,h2,h3):not(.live-example-title){font-family:revert-layer;font-weight:revert-layer;letter-spacing:revert-layer;line-height:revert-layer;font-size:revert-layer}
     .live-widget :is(button,input){font:revert-layer}
+    .finance-text-action{display:inline-flex;min-height:44px;align-items:center;padding:9px 0;margin-top:9px;border:0;background:none;color:#8c4b38;text-align:left;text-decoration:underline;text-underline-offset:4px;font-size:.81rem;font-weight:750;cursor:pointer}
+    .finance-right .finance-kicker{margin:0;color:#e0bca9;font-size:.7rem;font-weight:800;letter-spacing:.16em}
+    .finance-way{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:16px 0 20px;padding:4px;border-radius:9px;background:#314e55}
+    .finance-way button{min-height:44px;padding:5px;border:0;border-radius:6px;background:transparent;color:#d8e2df;font-size:.75rem;font-weight:700;cursor:pointer}
+    .finance-way button[aria-pressed=true]{background:#fffaf4;color:#213b43}
+    .finance-right .finance-figure{margin:0;color:#fffaf4;font-family:Georgia,serif;font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;line-height:1.15}
+    .finance-right .finance-figure-note{margin-top:6px;color:#e4eeeb;font-size:.87rem}
+    .finance-right .finance-assumption{margin-top:16px;font-size:.72rem;color:#bfd1cb}
+    .finance-event{display:grid;gap:4px;margin-top:23px;padding:15px 0 0;border-top:1px solid #4c676d}
+    .finance-event span{color:#c2d4cf;font-size:.72rem}
+    .finance-event strong{font-size:.94rem}
+    .finance-event small{color:#c2d4cf;font-size:.76rem;line-height:1.5}
+    .cost-receipt small{display:block;margin-top:3px;color:#667377;font-size:.71rem}
+    .finance-ledger{margin-top:20px;border-top:1px solid #4c676d}
+    .finance-ledger>div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #4c676d;font-size:.79rem}
+    .finance-ledger strong{white-space:nowrap;color:#fffaf4;font-size:.86rem}
+    .finance-sent{width:100%;min-height:46px;margin-top:20px;padding:8px 12px;border:1px solid #d9bba9;border-radius:8px;background:#fffaf4;color:#24434a;font-size:.77rem;font-weight:800;cursor:pointer}
+    .finance-right .finance-confirm{margin-top:10px;color:#d8e9d5;font-size:.77rem}
+    @media(max-width:720px){.finance-panel{margin-top:19px}.finance-left{padding:17px}.finance-right{padding:20px 17px}.finance-way{margin:13px 0 16px}.finance-event{margin-top:18px}}
   </style>
 </head>
 <body>
@@ -14744,12 +14763,37 @@ html.capacitor-native {
   <script id="page-interactions">
   (()=>{'use strict';
     const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
-    const state={finance:'plan',financeGroups:3,paid:false};
-    function renderFinance(){const plan=state.finance==='plan';$$('[data-finance]').forEach(b=>{b.setAttribute('aria-selected',String(b.dataset.finance===state.finance));b.tabIndex=b.dataset.finance===state.finance?0:-1});$('#finance-example').setAttribute('aria-labelledby','finance-tab-'+state.finance);if(plan){const total=10800,each=total/state.financeGroups;$('#finance-example').innerHTML=`<h3>Plan a year together.</h3><p>A few costs most shared houses know well.</p><div class="cost-row"><span>Property tax</span><b>$4,200</b></div><div class="cost-row"><span>Insurance</span><b>$1,800</b></div><div class="cost-row"><span>Utilities</span><b>$2,400</b></div><div class="cost-row"><span>Repairs & upkeep</span><b>$1,200</b></div><div class="cost-row"><span>Saving for a new roof</span><b>$1,200</b></div><div class="cost-total"><span>Sample annual plan</span><span>$10,800</span></div>`;$('#finance-result').innerHTML=`<p class="eyebrow">A clear share</p><h3>$${Math.round(each/12).toLocaleString()} a month each</h3><p>For ${state.financeGroups} groups, an equal share of the sample $10,800 annual plan would be $${each.toLocaleString()} per group for the year.</p><div class="group-counter"><button type="button" data-finance-action="less" aria-label="Fewer groups" ${state.financeGroups<=2?'disabled':''}>−</button><b>${state.financeGroups}</b><button type="button" data-finance-action="more" aria-label="More groups" ${state.financeGroups>=8?'disabled':''}>+</button><span>groups sharing costs</span></div><p class="fine">Your group can choose different ways to divide real expenses.</p>`}else{$('#finance-example').innerHTML=`<h3>Split a bill when it happens.</h3><p>A sample repair came in this month.</p><div class="cost-row"><span>Plumber visit</span><b>$360</b></div><div class="cost-total"><span>Sample total</span><span>$360</span></div><button id="paid-toggle" class="receipt-button ${state.paid?'done':''}" type="button" aria-pressed="${state.paid}">${state.paid?'Recorded as paid outside SplitHaus ✓':'Record an outside payment'}</button><p class="finance-small">This records a payment. It never sends money.</p>`;$('#finance-result').innerHTML=`<p class="eyebrow">Shared understanding</p><h3>$120 per group</h3><p>If three groups split this $360 sample repair equally, each group’s share is $120.</p><p class="fine">${state.paid?'One outside payment is marked in the sample record.':'Once someone pays outside SplitHaus, the group can record and confirm it here.'}</p>`}}
+    const state={finance:'plan',roofExtra:false,way:'monthly',supplies:false,sent:false};
+    const dollar=n=>'$'+n.toLocaleString('en-US');
+    function renderFinance(){
+      const plan=state.finance==='plan';
+      $$('[data-finance]').forEach(b=>{b.setAttribute('aria-selected',String(b.dataset.finance===state.finance));b.tabIndex=b.dataset.finance===state.finance?0:-1});
+      $('#finance-example').setAttribute('aria-labelledby','finance-tab-'+state.finance);
+      if(plan){
+        const roof=state.roofExtra?3000:1200,total=9600+roof;
+        const monthly=total/36,nightly=total/90;
+        const rates={monthly:`${dollar(monthly)} a month`,nightly:`${dollar(nightly)} per night`,both:`${dollar(monthly/2)} a month + ${dollar(nightly/2)} per night`};
+        const context={monthly:'from each of three groups',nightly:'for nights spent at the house',both:'monthly from each group, plus nights at the house'};
+        $('#finance-example').innerHTML=`<h3>Plan the year's costs.</h3><p>Annual bills, everyday expenses, and money set aside for the roof.</p><div class="cost-row"><span>Property tax</span><b>$4,200</b></div><div class="cost-row"><span>Insurance</span><b>$1,800</b></div><div class="cost-row"><span>Utilities</span><b>$2,400</b></div><div class="cost-row"><span>Repairs & upkeep</span><b>$1,200</b></div><div class="cost-row"><span>Saving for a new roof</span><b>${dollar(roof)}</b></div><div class="cost-total"><span>Total for the year</span><span>${dollar(total)}</span></div><button class="finance-text-action" type="button" data-finance-action="roof" aria-pressed="${state.roofExtra}">${state.roofExtra?'Return roof savings to $1,200':'What if we saved $3,000 for the roof?'}</button>`;
+        $('#finance-result').innerHTML=`<p class="finance-kicker">HOW THE GROUP COVERS IT</p><div class="finance-way" role="group" aria-label="Ways to share the annual costs"><button type="button" data-finance-way="monthly" aria-pressed="${state.way==='monthly'}">Monthly</button><button type="button" data-finance-way="nightly" aria-pressed="${state.way==='nightly'}">By nights</button><button type="button" data-finance-way="both" aria-pressed="${state.way==='both'}">Both</button></div><p class="finance-figure">${rates[state.way]}</p><p class="finance-figure-note">${context[state.way]}</p><p class="finance-assumption">Based on three groups and 90 nights at the house this year.</p><div class="finance-event"><span>When a bill comes in</span><strong>Property tax · $4,200</strong><small>Recorded as paid from the house account, against the $4,200 in the plan.</small></div>`;
+      }else{
+        const total=state.supplies?450:360,share=total/3,youOwe=share-(state.supplies?90:0);
+        $('#finance-example').innerHTML=`<h3>Split costs as they come in.</h3><p>The Garcias covered a plumber visit. Everyone can see the receipt and their share.</p><div class="cost-row cost-receipt"><span>Plumber visit<small>Paid by the Garcias</small></span><b>$360</b></div>${state.supplies?'<div class="cost-row cost-receipt"><span>House supplies<small>Paid by you</small></span><b>$90</b></div>':''}<div class="cost-total"><span>Total to share</span><span>${dollar(total)}</span></div><button class="finance-text-action" type="button" data-finance-action="supplies" aria-pressed="${state.supplies}">${state.supplies?'Remove the $90 supplies receipt':'Add a $90 supplies receipt'}</button>`;
+        $('#finance-result').innerHTML=`<p class="finance-kicker">WHO OWES WHOM</p><p class="finance-figure">${dollar(share)} each</p><p class="finance-figure-note">Three groups share ${dollar(total)} equally.</p><div class="finance-ledger"><div><span>You send the Garcias</span><strong>${dollar(youOwe)}</strong></div><div><span>The Murphys send the Garcias</span><strong>${dollar(share)}</strong></div></div><button class="finance-sent" type="button" data-finance-action="sent" aria-pressed="${state.sent}">${state.sent?'Undo “I sent it”':'I sent '+dollar(youOwe)+' outside SplitHaus'}</button>${state.sent?'<p class="finance-confirm" role="status">Marked sent. The Garcias can confirm when it arrives.</p>':''}`;
+      }
+    }
     $('#finance-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-finance]');if(!b)return;state.finance=b.dataset.finance;renderFinance()});
     $('#finance-tabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;const tabs=$$('[data-finance]'),i=tabs.findIndex(b=>b.dataset.finance===state.finance),next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;e.preventDefault();state.finance=tabs[next].dataset.finance;renderFinance();tabs[next].focus()});
-    $('#finance-result').addEventListener('click',e=>{const b=e.target.closest('[data-finance-action]');if(!b)return;state.financeGroups=Math.max(2,Math.min(8,state.financeGroups+(b.dataset.financeAction==='more'?1:-1)));renderFinance()});
-    $('#finance-example').addEventListener('click',e=>{if(e.target.closest('#paid-toggle')){state.paid=!state.paid;renderFinance()}});
+    $('.finance-panel').addEventListener('click',e=>{
+      const way=e.target.closest('[data-finance-way]');
+      if(way){state.way=way.dataset.financeWay;renderFinance();$(`[data-finance-way="${state.way}"]`).focus();return}
+      const action=e.target.closest('[data-finance-action]');if(!action)return;
+      const kind=action.dataset.financeAction;
+      if(kind==='roof')state.roofExtra=!state.roofExtra;
+      if(kind==='supplies'){state.supplies=!state.supplies;state.sent=false}
+      if(kind==='sent')state.sent=!state.sent;
+      renderFinance();$(`[data-finance-action="${kind}"]`)?.focus();
+    });
     $$('[data-guide]').forEach(b=>b.addEventListener('click',()=>{$$('[data-guide]').forEach(x=>{let on=x===b&&x.getAttribute('aria-expanded')!=='true';x.setAttribute('aria-expanded',String(on));$('#guide-'+x.dataset.guide).hidden=!on})}));
     const menu=$('#mobile-menu'),toggle=$('#menu-toggle');function setMenu(open){menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu');document.body.classList.toggle('menu-open',open)}toggle.addEventListener('click',()=>setMenu(menu.hidden));menu.addEventListener('click',e=>{if(e.target.closest('a')||e.target===menu)setMenu(false)});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){setMenu(false);toggle.focus()}});
     renderFinance();
